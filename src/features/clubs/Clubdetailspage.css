@@ -1,0 +1,638 @@
+/* =========================================
+   CAMPUS RADAR — CLUB DETAILS PAGE
+========================================= */
+
+.club-details {
+  --cd-sage: #dbe8d6;
+  --cd-sage-mid: #bcd2b5;
+  --cd-sage-dark: #476448;
+  --cd-cream: #fffaf3;
+  --cd-text: #292f29;
+  --cd-muted: #5b685a;
+  --cd-border: #d2dfcd;
+  --cd-white: #ffffff;
+
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 4rem;
+
+  background: var(--cd-cream);
+  color: var(--cd-text);
+
+  font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+.club-details *,
+.club-details *::before,
+.club-details *::after {
+  box-sizing: border-box;
+}
+
+.club-details h1,
+.club-details h2,
+.club-details h3,
+.club-details p,
+.club-details dl,
+.club-details dd,
+.club-details ul {
+  margin: 0;
+}
+
+.club-details h1,
+.club-details h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.2;
+}
+
+.club-details a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================
+   BANNER
+   Reserved for the team's banner image
+========================================= */
+
+.club-details__banner {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+
+  background: var(--cd-sage-mid);
+}
+
+/* =========================================
+   CLUB HEADER
+========================================= */
+
+.club-details__header {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+
+  width: 100%;
+  max-width: 1100px;
+
+  margin: -44px auto 0;
+  padding: 0 1.5rem;
+}
+
+/* Club logo */
+
+.club-details__logo {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+
+  width: 96px;
+  height: 96px;
+
+  border: 5px solid var(--cd-cream);
+  border-radius: 24px;
+
+  background: var(--cd-sage-dark);
+  color: var(--cd-white);
+
+  font-size: 1.25rem;
+  font-weight: 900;
+
+  box-shadow: 0 4px 12px rgb(42 65 42 / 15%);
+}
+
+/* Header information */
+
+.club-details__header > div {
+  min-width: 0;
+  padding-bottom: 0.2rem;
+}
+
+.club-details__header h1 {
+  margin: 0.35rem 0 0.4rem;
+
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: -0.025em;
+
+  overflow-wrap: anywhere;
+}
+
+.club-details__header p {
+  color: var(--cd-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+
+  overflow-wrap: anywhere;
+}
+
+/* Category label */
+
+.club-details__chip {
+  display: inline-block;
+
+  padding: 0.3rem 0.8rem;
+
+  border: 1px solid var(--cd-border);
+  border-radius: 999px;
+
+  background: var(--cd-cream);
+  color: var(--cd-sage-dark);
+
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+/* =========================================
+   MAIN PAGE LAYOUT
+========================================= */
+
+.club-details__layout {
+  display: grid;
+
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  align-items: start;
+  gap: 1.5rem;
+
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 2rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.club-details__main,
+.club-details__side {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* =========================================
+   CONTENT PANELS
+========================================= */
+
+.club-details__panel {
+  min-width: 0;
+  padding: 1.5rem;
+
+  border: 1px solid rgb(56 79 55 / 10%);
+  border-radius: 18px;
+
+  background: var(--cd-cream);
+
+  box-shadow: 0 4px 14px rgb(42 65 42 / 7%);
+
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.club-details__panel h2 {
+  margin-bottom: 1rem;
+  padding-left: 0.75rem;
+
+  border-left: 4px solid var(--cd-sage-dark);
+
+  font-size: 1.35rem;
+  overflow-wrap: anywhere;
+}
+
+.club-details__panel p {
+  color: var(--cd-muted);
+  font-size: 0.96rem;
+  line-height: 1.8;
+
+  overflow-wrap: anywhere;
+}
+
+.club-details__panel p + p {
+  margin-top: 0.75rem;
+}
+
+/* =========================================
+   CLUB ACTIVITIES
+========================================= */
+
+.club-details__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+
+  padding: 0;
+  list-style: none;
+}
+
+.club-details__list li {
+  max-width: 100%;
+  padding: 0.5rem 0.9rem;
+
+  border: 1px solid var(--cd-border);
+  border-radius: 999px;
+
+  background: var(--cd-sage);
+  color: var(--cd-text);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   PHOTO GALLERY
+========================================= */
+
+.club-details__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.club-details__photo {
+  display: grid;
+  place-items: center;
+
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+
+  border: 1px dashed #779473;
+  border-radius: 14px;
+
+  background: rgb(219 232 214 / 50%);
+  color: var(--cd-sage-dark);
+
+  font-size: 1.8rem;
+  opacity: 0.8;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.club-details__photo:hover {
+  border-color: var(--cd-sage-dark);
+  background: var(--cd-sage);
+}
+
+/* =========================================
+   CLUB INFORMATION
+========================================= */
+
+.club-details__panel dl {
+  min-width: 0;
+}
+
+.club-details__panel dt {
+  margin-top: 1rem;
+
+  color: var(--cd-sage-dark);
+
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.club-details__panel dt:first-child {
+  margin-top: 0;
+}
+
+.club-details__panel dd {
+  margin-top: 0.3rem;
+
+  color: var(--cd-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   CLUB LEADER
+========================================= */
+
+.club-details__leader {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  min-width: 0;
+  padding: 0.9rem;
+
+  border: 1px solid var(--cd-border);
+  border-radius: 14px;
+
+  background: var(--cd-sage);
+}
+
+.club-details__avatar {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  background: var(--cd-sage-dark);
+  color: var(--cd-white);
+
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.club-details__leader > div {
+  min-width: 0;
+}
+
+.club-details__leader strong {
+  display: block;
+
+  color: var(--cd-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+.club-details__leader span:not(.club-details__avatar) {
+  display: block;
+  margin-top: 0.15rem;
+
+  color: var(--cd-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* =========================================
+   BACK TO CLUBS BUTTON
+========================================= */
+
+.club-details__back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: 0.5rem;
+
+  min-height: 46px;
+  padding: 0.7rem 1.3rem;
+
+  border: 1px solid var(--cd-sage-dark);
+  border-radius: 999px;
+
+  background: var(--cd-sage-dark);
+  color: var(--cd-white);
+
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.club-details__back:hover {
+  border-color: #354f36;
+  background: #354f36;
+  transform: translateY(-2px);
+}
+
+.club-details__back:focus-visible {
+  outline: 3px solid var(--cd-sage);
+  outline-offset: 4px;
+}
+
+/* =========================================
+   CLUB NOT FOUND
+========================================= */
+
+.club-details__missing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  width: 100%;
+  max-width: 520px;
+
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+
+  text-align: center;
+}
+
+.club-details__missing h1 {
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+}
+
+.club-details__missing p {
+  color: var(--cd-muted);
+  line-height: 1.7;
+}
+
+/* =========================================
+   TABLET AND SMALL LAPTOP
+========================================= */
+
+@media (max-width: 860px) {
+  .club-details__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .club-details__main,
+  .club-details__side {
+    gap: 1.25rem;
+  }
+
+  .club-details__header {
+    max-width: 760px;
+  }
+
+  .club-details__layout {
+    max-width: 760px;
+  }
+
+  /* Keep gallery cards side by side on tablets */
+  .club-details__gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .club-details {
+    padding-bottom: 2.5rem;
+  }
+
+  .club-details__banner {
+    height: 130px;
+  }
+
+  /* Stack logo and club information */
+  .club-details__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.85rem;
+
+    margin-top: -40px;
+    padding: 0 1rem;
+  }
+
+  .club-details__logo {
+    width: 82px;
+    height: 82px;
+
+    border-radius: 20px;
+    font-size: 1.1rem;
+  }
+
+  .club-details__header > div {
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  .club-details__header h1 {
+    margin-top: 0.5rem;
+    font-size: 1.9rem;
+  }
+
+  .club-details__header p {
+    font-size: 0.93rem;
+  }
+
+  /* Single-column layout */
+  .club-details__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+
+    margin-top: 1.75rem;
+    padding: 0 1rem;
+  }
+
+  .club-details__main,
+  .club-details__side {
+    gap: 1rem;
+  }
+
+  /* Panels */
+  .club-details__panel {
+    padding: 1.15rem;
+    border-radius: 16px;
+  }
+
+  .club-details__panel h2 {
+    margin-bottom: 0.85rem;
+    font-size: 1.2rem;
+  }
+
+  .club-details__panel p {
+    font-size: 0.93rem;
+    line-height: 1.75;
+  }
+
+  /* Activities */
+  .club-details__list {
+    gap: 0.5rem;
+  }
+
+  .club-details__list li {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  /* Gallery */
+  .club-details__gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .club-details__photo {
+    border-radius: 12px;
+  }
+
+  /* Back button */
+  .club-details__back {
+    min-height: 46px;
+  }
+
+  /* Missing club message */
+  .club-details__missing {
+    margin-top: 2.5rem;
+    padding: 0 1rem;
+  }
+}
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 360px) {
+  .club-details__header {
+    padding: 0 0.8rem;
+  }
+
+  .club-details__layout {
+    padding: 0 0.8rem;
+  }
+
+  .club-details__panel {
+    padding: 1rem;
+  }
+
+  .club-details__header h1 {
+    font-size: 1.7rem;
+  }
+
+  .club-details__panel h2 {
+    font-size: 1.1rem;
+  }
+
+  /* One gallery item per row on very narrow screens */
+  .club-details__gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* =========================================
+   TOUCHSCREEN DEVICES
+========================================= */
+
+@media (hover: none) {
+  .club-details__back:hover {
+    transform: none;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .club-details *,
+  .club-details *::before,
+  .club-details *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .club-details__back:hover {
+    transform: none;
+  }
+}

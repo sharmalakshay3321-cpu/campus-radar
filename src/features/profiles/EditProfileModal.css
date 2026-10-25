@@ -1,0 +1,262 @@
+/* Edit Profile Modal */
+
+.sprof-edit-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(30, 34, 31, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.sprof-edit-modal {
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.2);
+  animation: sprof-edit-appear 0.2s ease-out;
+}
+
+@keyframes sprof-edit-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+
+.sprof-edit-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 25px 28px 20px;
+  border-bottom: 1px solid #eeece7;
+}
+
+.sprof-edit-eyebrow {
+  color: #718173;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.sprof-edit-header h2 {
+  margin: 8px 0;
+  color: #292b35;
+  font-size: 25px;
+}
+
+.sprof-edit-header p {
+  margin: 0;
+  color: #85858d;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.sprof-edit-close {
+  display: grid;
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #f2f3ef;
+  color: #52564f;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.sprof-edit-close:hover {
+  background: #e6e9e2;
+}
+
+.sprof-edit-close:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Form */
+
+.sprof-edit-body {
+  display: grid;
+  gap: 19px;
+  padding: 25px 28px;
+}
+
+.sprof-edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.sprof-edit-field label {
+  color: #3d403a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sprof-edit-field input,
+.sprof-edit-field select,
+.sprof-edit-field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  border: 1px solid #dedfd9;
+  border-radius: 9px;
+  outline: none;
+  background: #fff;
+  color: #343640;
+  font-family: inherit;
+  font-size: 13px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sprof-edit-field input:focus,
+.sprof-edit-field select:focus,
+.sprof-edit-field textarea:focus {
+  border-color: #829783;
+  box-shadow: 0 0 0 3px rgba(130, 151, 131, 0.13);
+}
+
+.sprof-edit-field input:disabled {
+  background: #f4f4f1;
+  color: #85858d;
+  cursor: not-allowed;
+}
+
+.sprof-edit-field textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+.sprof-edit-field small {
+  color: #898a91;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Two-column rows */
+
+.sprof-edit-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Error Message */
+
+.sprof-edit-error {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #f0d0cc;
+  border-radius: 8px;
+  background: #fff2f0;
+  color: #a53e34;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Footer Buttons */
+
+.sprof-edit-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 18px 28px 25px;
+  border-top: 1px solid #eeece7;
+}
+
+.sprof-edit-cancel,
+.sprof-edit-save {
+  padding: 11px 18px;
+  border: 1px solid #dfe1da;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.sprof-edit-cancel {
+  background: #fff;
+  color: #55584f;
+}
+
+.sprof-edit-cancel:hover {
+  background: #f5f5f1;
+}
+
+.sprof-edit-save {
+  border-color: #657c69;
+  background: #657c69;
+  color: #fff;
+}
+
+.sprof-edit-save:hover {
+  background: #526a56;
+  transform: translateY(-1px);
+}
+
+.sprof-edit-save:disabled,
+.sprof-edit-cancel:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 520px) {
+  .sprof-edit-backdrop {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .sprof-edit-modal {
+    max-height: calc(100vh - 24px);
+    border-radius: 13px;
+  }
+
+  .sprof-edit-header {
+    padding: 21px 19px 17px;
+  }
+
+  .sprof-edit-header h2 {
+    font-size: 22px;
+  }
+
+  .sprof-edit-body {
+    gap: 17px;
+    padding: 20px 19px;
+  }
+
+  .sprof-edit-row {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .sprof-edit-footer {
+    padding: 16px 19px 20px;
+  }
+
+  .sprof-edit-cancel,
+  .sprof-edit-save {
+    flex: 1;
+  }
+}
