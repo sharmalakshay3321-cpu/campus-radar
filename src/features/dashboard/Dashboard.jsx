@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
+import { getCurrentUser } from "../../utils/storage";
 import avatar from "../../assets/dashboard/campus-mascots.webp";
-
 import campusMascots from "../../assets/dashboard/campus-mascots.webp";
 import clubsMascot from "../../assets/dashboard/clubs-mascot.webp";
 import crewMascot from "../../assets/dashboard/crew-mascot.webp";
@@ -16,6 +16,19 @@ function SearchIcon() {
       <path d="m16.5 16.5 4 4" />
     </svg>
   );
+}
+const user = getCurrentUser();
+
+const currentHour = new Date().getHours();
+
+let greeting;
+
+if (currentHour < 12) {
+  greeting = "Good morning";
+} else if (currentHour < 17) {
+  greeting = "Good afternoon";
+} else {
+  greeting = "Good evening";
 }
 
 function BellIcon() {
@@ -65,7 +78,8 @@ const featureCards = [
   },
   {
     title: "Clubs",
-    description: "Discover communities, meet like-minded students, and find your people.",
+    description:
+      "Discover communities, meet like-minded students, and find your people.",
     button: "Explore Clubs",
     footnote: "Find your campus community",
     image: clubsMascot,
@@ -74,17 +88,27 @@ const featureCards = [
   },
 ];
 
-const activityItems = [
-  { icon: "🤖", title: "Robotics Club", detail: "Workshop started", time: "2m ago" },
-  { icon: "🎵", title: "Music Club", detail: "Open mic at Auditorium", time: "5m ago" },
-  { icon: "🎨", title: "Design Society", detail: "Poster making event", time: "10m ago" },
-  { icon: "🏀", title: "Basketball Match", detail: "Starts in 30m", time: "10:15 AM" },
-  { icon: "🎤", title: "Tech Talk", detail: "AI in Future – Seminar", time: "18m ago" },
-];
-
 function Dashboard() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+
+const user = getCurrentUser();
+
+const currentHour = new Date().getHours();
+
+let greeting;
+
+if (currentHour < 12) {
+  greeting = "Good morning";
+} else if (currentHour < 17) {
+  greeting = "Good afternoon";
+} else {
+  greeting = "Good evening";
+}
+
+
+
+
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -96,6 +120,7 @@ function Dashboard() {
       <header className="dashboard-topbar">
         <form className="dashboard-search" onSubmit={handleSearch}>
           <SearchIcon />
+
           <input
             type="search"
             value={search}
@@ -103,19 +128,35 @@ function Dashboard() {
             placeholder="Search for events, people, clubs, posts..."
             aria-label="Search Campus Radar"
           />
+
           <span className="dashboard-shortcut">⌘K</span>
         </form>
 
         <div className="dashboard-topbar-actions">
-          <button className="dashboard-icon-button" type="button" aria-label="Notifications">
+          <button
+            className="dashboard-icon-button"
+            type="button"
+            aria-label="Notifications"
+          >
             <BellIcon />
             <span className="dashboard-badge">4</span>
           </button>
-          <button className="dashboard-icon-button" type="button" aria-label="Messages">
+
+          <button
+            className="dashboard-icon-button"
+            type="button"
+            aria-label="Messages"
+          >
             <MessageIcon />
             <span className="dashboard-badge">2</span>
           </button>
-          <button className="dashboard-profile-chip" type="button" onClick={() => navigate("/profile")} aria-label="Open profile">
+
+          <button
+            className="dashboard-profile-chip"
+            type="button"
+            onClick={() => navigate("/profile")}
+            aria-label="Open profile"
+          >
             <img src={avatar} alt="" />
             <span className="dashboard-chevron">⌄</span>
           </button>
@@ -124,7 +165,13 @@ function Dashboard() {
 
       <main className="dashboard-content">
         <section className="dashboard-main-column">
-          <p className="dashboard-greeting"><span aria-hidden="true">👋</span> Good morning!</p>
+         
+<p className="dashboard-greeting">
+  <span aria-hidden="true">👋</span>{" "}
+  {greeting}, {user?.name || "Student"}!
+</p>
+
+
 
           <section className="dashboard-hero">
             <div className="dashboard-hero-copy">
@@ -133,62 +180,103 @@ function Dashboard() {
                 <span className="dashboard-hero-highlight">Happening</span>
                 <span>on Campus?</span>
               </h1>
+
               <p>Stay in the loop and make the most of every moment.</p>
+
               <div className="dashboard-composer-actions">
-                <button type="button"><span>▧</span> Photo</button>
-                <button type="button"><span>▤</span> Poll</button>
-                <button type="button"><span>▣</span> Event</button>
-                <button type="button"><span>☺</span> Feeling</button>
+                <button type="button">
+                  <span>▧</span> Photo
+                </button>
+                <button type="button">
+                  <span>▤</span> Poll
+                </button>
+                <button type="button">
+                  <span>▣</span> Event
+                </button>
+                <button type="button">
+                  <span>☺</span> Feeling
+                </button>
               </div>
             </div>
 
             <div className="dashboard-hero-art">
-              <div className="dashboard-float-pill dashboard-pill-hackathon"><span>🏆</span><div><strong>Hackathon 2.0</strong><small>Begins in 1h 20m</small></div></div>
-              <div className="dashboard-float-pill dashboard-pill-basketball"><span>🏀</span><div><strong>Basketball Match</strong><small>Starts in 30 min</small></div></div>
-              <div className="dashboard-float-pill dashboard-pill-coding"><span>💻</span><div><strong>Coding Club</strong><small>Recruitment Drive · 10:00 AM</small></div></div>
-              <div className="dashboard-float-pill dashboard-pill-openmic"><span>🎵</span><div><strong>Open Mic Night</strong><small>Tonight, 7:30 PM</small></div></div>
-              <img src={campusMascots} alt="Campus Radar students spending time together on campus" />
+              <div className="dashboard-float-pill dashboard-pill-hackathon">
+                <span>🏆</span>
+                <div>
+                  <strong>Hackathon 2.0</strong>
+                  <small>Begins in 1h 20m</small>
+                </div>
+              </div>
+
+              <div className="dashboard-float-pill dashboard-pill-basketball">
+                <span>🏀</span>
+                <div>
+                  <strong>Basketball Match</strong>
+                  <small>Starts in 30 min</small>
+                </div>
+              </div>
+
+              <div className="dashboard-float-pill dashboard-pill-coding">
+                <span>💻</span>
+                <div>
+                  <strong>Coding Club</strong>
+                  <small>Recruitment Drive · 10:00 AM</small>
+                </div>
+              </div>
+
+              <div className="dashboard-float-pill dashboard-pill-openmic">
+                <span>🎵</span>
+                <div>
+                  <strong>Open Mic Night</strong>
+                  <small>Tonight, 7:30 PM</small>
+                </div>
+              </div>
+
+              <img
+                src={campusMascots}
+                alt="Campus Radar students spending time together on campus"
+              />
             </div>
           </section>
 
-          <section className="dashboard-feature-grid" aria-label="Explore Campus Radar">
+          <section
+            className="dashboard-feature-grid"
+            aria-label="Explore Campus Radar"
+          >
             {featureCards.map((card) => (
-              <article className={`dashboard-feature-card dashboard-card-${card.theme}`} key={card.title}>
+              <article
+                className={`dashboard-feature-card dashboard-card-${card.theme}`}
+                key={card.title}
+              >
                 <div className="dashboard-feature-copy">
                   <h2>{card.title}</h2>
                   <p>{card.description}</p>
-                  <button type="button" onClick={() => navigate(card.route)}>
-                    {card.button}<span aria-hidden="true">→</span>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate(card.route)}
+                  >
+                    {card.button}
+                    <span aria-hidden="true">→</span>
                   </button>
+
                   <small>{card.footnote}</small>
                 </div>
-                <img className="dashboard-feature-mascot" src={card.image} alt="" />
+
+                <img
+                  className="dashboard-feature-mascot"
+                  src={card.image}
+                  alt=""
+                />
               </article>
             ))}
           </section>
         </section>
-
-        <aside className="dashboard-pulse-column">
-          <section className="dashboard-pulse-card">
-            <div className="dashboard-pulse-heading">
-              <div><span className="dashboard-live-dot" /> <span className="dashboard-pulse-eyebrow">LIVE PULSE</span></div>
-              <h2>Real-time campus activity</h2>
-            </div>
-            <div className="dashboard-activity-list">
-              {activityItems.map((item) => (
-                <article className="dashboard-activity-item" key={item.title}>
-                  <span className="dashboard-activity-icon" aria-hidden="true">{item.icon}</span>
-                  <div className="dashboard-activity-copy"><strong>{item.title}</strong><span>{item.detail}</span></div>
-                  <time>{item.time}</time>
-                </article>
-              ))}
-            </div>
-            <button className="dashboard-view-activity" type="button">View all activity <span>→</span></button>
-          </section>
-        </aside>
       </main>
     </div>
   );
 }
 
 export default Dashboard;
+
+

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/Campus Radar Community Logo.png";
-import { findStudentByEmail, loginUser } from "../../utils/storage";
+//import { findStudentByEmail, loginUser } from "../../utils/storage";
+import { loginStudent } from "../../utils/storage";
 import "./auth.css";
 
 function StudentLogin() {
@@ -27,25 +28,32 @@ function StudentLogin() {
       return;
     }
 
-    const student = findStudentByEmail(email);
+    try {
+    const result = loginStudent(email, password);
 
-    if (!student) {
-      setErrors({
-        email: "Account not found. Please sign up first.",
-      });
+    if (!result.success) {
+      if (result.message.includes("email")) {
+        setErrors({
+          email: "Account not found. Please sign up first.",
+        });
+      } else {
+        setErrors({
+          password: result.message,
+        });
+      }
+
       return;
     }
 
-    try {
-      loginUser(student);
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("Login failed:", error);
-      setErrors({
-        general: "Something went wrong. Please try again.",
-      });
-    }
-  };
+    navigate("/dashboard");
+  } catch (error) {
+    console.error("Login failed:", error);
+
+    setErrors({
+      general: "Something went wrong. Please try again.",
+    });
+  }
+};
 
   // Open the student signup page
   const handleSignupClick = (e) => {
@@ -182,16 +190,12 @@ function StudentLogin() {
           </form>
 
           {/* Signup navigation */}
-          <p className="auth-switch">
-            Don't have an account?{" "}
-            <Link
-              to="/signup/student"
-              className="auth-link"
-              onClick={handleSignupClick}
-            >
-              Sign up
-            </Link>
-          </p>
+         <p className="auth-switch">
+  Don't have an account?{" "}
+  <Link to="/signup/student" className="auth-link">
+    Sign up
+  </Link>
+</p>
 
           <p className="auth-tagline">
             Discover. Connect. Belong.

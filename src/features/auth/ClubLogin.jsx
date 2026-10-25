@@ -15,7 +15,7 @@ export default function ClubLogin() {
     e.preventDefault();
 
     const newErrors = {};
-if (!values.email.trim()) {
+if (!email.trim()) {
   newErrors.email = "Enter your club email.";
 } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
   newErrors.email = "Enter a valid email address.";

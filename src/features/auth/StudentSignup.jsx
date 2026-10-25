@@ -66,6 +66,7 @@ function StudentSignup() {
      const result = registerStudent({
   name: fullName,
   email: email,
+  password:password,
 });
 
 if (!result.success) {
@@ -77,7 +78,7 @@ if (!result.success) {
 }
 
 alert("Account created successfully! Please log in.");
-navigate("/login/student");
+navigate("/login/");
 
       // Connect your existing registration logic here.
       // This validation alone does not create an account.

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Campus Radar Community Logo.png";
 import "./ClubSignup.css";
-
+import { registerClub } from "../../utils/storage";
 const categories = [
   "Technical",
   "Cultural",
