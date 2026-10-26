@@ -1,0 +1,751 @@
+/* =========================================
+   MAIN PROFILE PAGE
+========================================= */
+
+.sprof-page {
+  min-height: 100vh;
+  padding: 32px 20px 60px;
+  background: #f8f7f4;
+  color: #292b35;
+  font-family: Arial, sans-serif;
+}
+
+.sprof-page *,
+.sprof-page *::before,
+.sprof-page *::after {
+  box-sizing: border-box;
+}
+
+.sprof-container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   BANNER
+========================================= */
+
+.sprof-banner {
+  height: 220px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #dfe9e1, #e9e5d9, #e8dfe7);
+}
+
+.sprof-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================================
+   NOTICES
+========================================= */
+
+.sprof-demo-notice,
+.sprof-notice {
+  margin-top: 18px;
+  padding: 13px 16px;
+  border-radius: 10px;
+  background: #fff3d9;
+  color: #74551a;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.sprof-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #e6f3e9;
+  color: #285b36;
+}
+
+.sprof-notice button {
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+
+/* =========================================
+   PROFILE HEADER
+========================================= */
+
+.sprof-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 8px 32px;
+}
+
+.sprof-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.sprof-avatar {
+  display: block;
+  width: 118px;
+  height: 118px;
+  object-fit: cover;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  background: #e8e9ed;
+  box-shadow: 0 4px 18px rgb(0 0 0 / 8%);
+}
+
+.sprof-change-avatar {
+  position: absolute;
+  right: 2px;
+  bottom: 5px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #657c69;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.sprof-change-avatar:hover {
+  background: #4f6753;
+  transform: scale(1.05);
+}
+
+.sprof-profile-intro {
+  flex: 1;
+  min-width: 0;
+}
+
+.sprof-eyebrow {
+  color: #718173;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+
+.sprof-profile-intro h1 {
+  margin: 7px 0;
+  font-size: clamp(25px, 4vw, 34px);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.sprof-subtitle {
+  margin: 0 0 12px;
+  color: #747580;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.sprof-badge {
+  display: inline-block;
+  padding: 7px 11px;
+  border-radius: 20px;
+  background: #e8eee7;
+  color: #526c56;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sprof-edit-button {
+  flex-shrink: 0;
+  padding: 11px 17px;
+  border: 1px solid #d9ddd7;
+  border-radius: 9px;
+  background: #fff;
+  color: #39443b;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.sprof-edit-button:hover {
+  background: #edf1eb;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   MAIN PROFILE LAYOUT
+
+   Row 1: Academic Information | About Me
+   Row 2: Skills                | Interests
+========================================= */
+
+.sprof-main-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+}
+
+.sprof-left-column {
+  display: grid;
+  gap: 18px;
+}
+
+
+/* =========================================
+   PROFILE INFORMATION CARDS
+========================================= */
+
+.sprof-card {
+  min-width: 0;
+  min-height: 190px;
+  padding: 30px;
+  border: 1px solid #eeece7;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgb(42 45 39 / 3%);
+}
+
+.sprof-card h2 {
+  margin: 0 0 19px;
+  color: #292b35;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.sprof-muted {
+  margin: 0;
+  color: #8b8c94;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   ACADEMIC INFORMATION
+========================================= */
+
+.sprof-academic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 18px;
+}
+
+.sprof-academic-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.sprof-academic-grid span {
+  color: #85858d;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.sprof-academic-grid strong {
+  overflow-wrap: anywhere;
+  color: #343640;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   ABOUT ME / BIO
+========================================= */
+
+.sprof-bio {
+  margin: 0;
+  color: #6f7079;
+  font-size: 17px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   SKILLS AND INTERESTS
+========================================= */
+
+.sprof-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sprof-chip {
+  display: inline-block;
+  max-width: 100%;
+  padding: 9px 15px;
+  border: 1px solid #e5eae2;
+  border-radius: 8px;
+  background: #f4f7f2;
+  color: #566d58;
+  font-size: 15px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   MY ACTIVITY SECTION
+
+   This section should appear AFTER
+   .sprof-main-grid in your JSX.
+========================================= */
+
+.sprof-activity-section {
+  width: 100%;
+  margin-top: 24px;
+  padding: 28px 0 0;
+  overflow: hidden;
+  border: 1px solid #eeece7;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgb(42 45 39 / 3%);
+}
+
+.sprof-activity-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 30px 24px;
+}
+
+.sprof-activity-heading h2 {
+  margin: 7px 0 0;
+  color: #292b35;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.sprof-total-count {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #f1f2ee;
+  color: #696e68;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   ACTIVITY TABS
+========================================= */
+
+.sprof-tabs {
+  display: flex;
+  gap: 28px;
+  padding: 0 30px;
+  overflow-x: auto;
+  border-bottom: 1px solid #eeece7;
+}
+
+.sprof-tab {
+  position: relative;
+  flex-shrink: 0;
+  padding: 14px 2px 16px;
+  border: 0;
+  background: transparent;
+  color: #898992;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.sprof-tab:hover {
+  color: #526c56;
+}
+
+.sprof-tab-active {
+  color: #526c56;
+}
+
+.sprof-tab-active::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #718b73;
+  content: "";
+}
+
+
+/* =========================================
+   ACTIVITY LIST
+========================================= */
+
+.sprof-activity-list {
+  display: grid;
+  gap: 0;
+  width: 100%;
+}
+
+.sprof-activity-card {
+  display: flex;
+  gap: 18px;
+  padding: 25px 30px;
+  border-bottom: 1px solid #f0efeb;
+}
+
+.sprof-activity-card:last-child {
+  border-bottom: 0;
+}
+
+.sprof-activity-icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 12px;
+  background: #edf2eb;
+  font-size: 21px;
+}
+
+.sprof-activity-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.sprof-activity-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sprof-activity-type {
+  color: #708471;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.sprof-activity-date {
+  color: #9999a0;
+  font-size: 12px;
+}
+
+.sprof-activity-content h3 {
+  margin: 0 0 10px;
+  color: #343640;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.sprof-activity-content > p {
+  margin: 0 0 12px;
+  color: #777881;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.sprof-location {
+  display: block;
+  margin-bottom: 12px;
+  color: #7b7d83;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.sprof-view-link {
+  display: inline-block;
+  color: #59755c;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sprof-view-link:hover {
+  color: #354e39;
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.sprof-empty {
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.sprof-empty-icon {
+  display: grid;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 18px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f0f3ed;
+  color: #708471;
+  font-size: 26px;
+}
+
+.sprof-empty h3 {
+  margin: 0 0 10px;
+  color: #343640;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.sprof-empty p {
+  max-width: 450px;
+  margin: 0 auto;
+  color: #8a8b92;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   RESPONSIVE: TABLETS
+========================================= */
+
+@media (max-width: 850px) {
+  .sprof-main-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .sprof-card {
+    padding: 24px;
+  }
+
+  .sprof-card h2 {
+    font-size: 22px;
+  }
+
+  .sprof-academic-grid {
+    gap: 20px 12px;
+  }
+
+  .sprof-academic-grid strong {
+    font-size: 16px;
+  }
+
+  .sprof-chip {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE: MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .sprof-page {
+    padding: 18px 12px 35px;
+  }
+
+  .sprof-container {
+    width: 100%;
+  }
+
+  .sprof-banner {
+    height: 145px;
+    border-radius: 13px;
+  }
+
+  .sprof-profile-header {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 23px 4px;
+  }
+
+  .sprof-avatar {
+    width: 88px;
+    height: 88px;
+  }
+
+  .sprof-change-avatar {
+    width: 31px;
+    height: 31px;
+    font-size: 15px;
+  }
+
+  .sprof-profile-intro {
+    flex-basis: calc(100% - 110px);
+  }
+
+  .sprof-profile-intro h1 {
+    font-size: 25px;
+  }
+
+  .sprof-subtitle {
+    font-size: 13px;
+  }
+
+  .sprof-edit-button {
+    margin-left: auto;
+  }
+
+  .sprof-main-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .sprof-card {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .sprof-card h2 {
+    margin-bottom: 16px;
+    font-size: 21px;
+  }
+
+  .sprof-academic-grid {
+    gap: 20px 12px;
+  }
+
+  .sprof-academic-grid span {
+    font-size: 13px;
+  }
+
+  .sprof-academic-grid strong {
+    font-size: 16px;
+  }
+
+  .sprof-bio {
+    font-size: 15px;
+  }
+
+  .sprof-chip {
+    padding: 8px 11px;
+    font-size: 13px;
+  }
+
+  .sprof-chip-list {
+    gap: 9px;
+  }
+
+  .sprof-activity-section {
+    margin-top: 18px;
+    padding-top: 22px;
+    border-radius: 13px;
+  }
+
+  .sprof-activity-heading {
+    align-items: flex-start;
+    padding: 0 20px 20px;
+  }
+
+  .sprof-activity-heading h2 {
+    font-size: 21px;
+  }
+
+  .sprof-total-count {
+    padding: 7px 9px;
+    font-size: 12px;
+  }
+
+  .sprof-tabs {
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .sprof-tab {
+    padding: 13px 1px 14px;
+    font-size: 13px;
+  }
+
+  .sprof-activity-card {
+    gap: 13px;
+    padding: 20px;
+  }
+
+  .sprof-activity-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .sprof-activity-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sprof-activity-content h3 {
+    font-size: 16px;
+  }
+
+  .sprof-activity-content > p {
+    font-size: 14px;
+  }
+
+  .sprof-location {
+    font-size: 13px;
+  }
+
+  .sprof-empty {
+    padding: 45px 20px;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE: SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .sprof-profile-header {
+    gap: 12px;
+  }
+
+  .sprof-avatar {
+    width: 75px;
+    height: 75px;
+  }
+
+  .sprof-profile-intro {
+    flex-basis: calc(100% - 90px);
+  }
+
+  .sprof-profile-intro h1 {
+    font-size: 22px;
+  }
+
+  .sprof-academic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sprof-activity-heading {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sprof-activity-card {
+    padding: 17px;
+  }
+}
