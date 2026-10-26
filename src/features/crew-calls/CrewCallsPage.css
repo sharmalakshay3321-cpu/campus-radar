@@ -1,0 +1,739 @@
+
+/* ========================================
+   CREW CALLS PAGE
+======================================== */
+
+.crew-calls-page {
+  --crew-purple: #8f78b7;
+  --crew-purple-dark: #5e4b7d;
+  --crew-lavender: #eee7f7;
+  --crew-cream: #fbf7ef;
+  --crew-yellow: #f4c85b;
+  --crew-coral: #e98d79;
+  --crew-sage: #dce8d5;
+  --crew-ink: #302b37;
+  --crew-muted: #817b87;
+  --crew-border: #e9e1ec;
+
+  min-height: 100vh;
+  padding: 0 clamp(16px, 5vw, 76px) 60px;
+  background: var(--crew-cream);
+  color: var(--crew-ink);
+  font-family: inherit;
+}
+
+.crew-calls-page *,
+.crew-calls-page *::before,
+.crew-calls-page *::after {
+  box-sizing: border-box;
+}
+
+.crew-calls-page button,
+.crew-calls-page input,
+.crew-calls-page select {
+  font: inherit;
+}
+
+/* ========================================
+   INTRO
+   Keep the existing assets banner separate.
+======================================== */
+
+.crew-calls-page__intro {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 36px 0 10px;
+}
+
+.crew-calls-page__eyebrow,
+.crew-calls-page__section-eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--crew-purple-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.crew-calls-page__intro h1 {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+}
+
+.crew-calls-page__intro > p {
+  max-width: 620px;
+  margin: 12px 0 20px;
+  color: var(--crew-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.crew-calls-page__create-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 11px 19px;
+  border: 2px solid var(--crew-ink);
+  border-radius: 12px;
+  background: var(--crew-yellow);
+  color: var(--crew-ink);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.crew-calls-page__create-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0 var(--crew-ink);
+}
+
+/* ========================================
+   SECTION HEADING
+======================================== */
+
+.crew-calls-page__body {
+  max-width: 1250px;
+  margin: 38px auto 0;
+}
+
+.crew-calls-page__section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.crew-calls-page__section-heading h2 {
+  margin: 0;
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.crew-calls-page__section-heading p {
+  margin: 9px 0 0;
+  color: var(--crew-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.crew-calls-page__result-count {
+  flex-shrink: 0;
+  padding: 8px 13px;
+  border: 1px solid var(--crew-border);
+  border-radius: 24px;
+  background: white;
+  color: var(--crew-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ========================================
+   SEARCH AND SORT
+======================================== */
+
+.crew-calls-page__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.crew-calls-page__search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  min-height: 49px;
+  padding: 0 15px;
+  border: 1px solid var(--crew-border);
+  border-radius: 12px;
+  background: white;
+}
+
+.crew-calls-page__search > span {
+  color: var(--crew-purple);
+  font-size: 24px;
+}
+
+.crew-calls-page__search input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--crew-ink);
+  font-size: 14px;
+}
+
+.crew-calls-page__search input::placeholder {
+  color: #a19aa7;
+}
+
+.crew-calls-page__search button {
+  border: none;
+  background: transparent;
+  color: var(--crew-muted);
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.crew-calls-page__sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--crew-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.crew-calls-page__sort select {
+  min-height: 47px;
+  padding: 0 28px 0 12px;
+  border: 1px solid var(--crew-border);
+  border-radius: 11px;
+  background: white;
+  color: var(--crew-ink);
+  cursor: pointer;
+}
+
+/* ========================================
+   CATEGORY FILTERS
+======================================== */
+
+.crew-calls-page__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 24px;
+}
+
+.crew-calls-page__filter {
+  min-height: 38px;
+  padding: 8px 15px;
+  border: 1px solid #e4dce9;
+  border-radius: 24px;
+  background: white;
+  color: var(--crew-muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.crew-calls-page__filter:hover {
+  border-color: var(--crew-purple);
+  color: var(--crew-purple-dark);
+}
+
+.crew-calls-page__filter--active {
+  border-color: var(--crew-purple-dark);
+  background: var(--crew-purple-dark);
+  color: white;
+}
+
+/* ========================================
+   LISTING CARDS
+======================================== */
+
+.crew-calls-page__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+.crew-call-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 31%) minmax(0, 1fr);
+  min-width: 0;
+  min-height: 235px;
+  overflow: hidden;
+  border: 1px solid var(--crew-border);
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(48, 43, 55, 0.035);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.crew-call-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(48, 43, 55, 0.07);
+}
+
+/* ========================================
+   SIMPLE COLOURED ARTWORK
+   No shapes, sparkles, or decorative graphics.
+======================================== */
+
+.crew-call-card__art {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  min-width: 0;
+  min-height: 235px;
+  padding: 26px;
+}
+
+.crew-call-card__art--lavender {
+  background: #e8def5;
+}
+
+.crew-call-card__art--yellow {
+  background: #f8e8ad;
+}
+
+.crew-call-card__art--coral {
+  background: #f5d5cb;
+}
+
+.crew-call-card__art--sage {
+  background: #dce8d5;
+}
+
+.crew-call-card__art-category {
+  color: #554768;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.crew-call-card__art-title {
+  display: -webkit-box;
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--crew-ink);
+  font-size: clamp(23px, 2.3vw, 30px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.crew-call-card__art--with-image {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  background: var(--crew-lavender);
+}
+
+.crew-call-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 235px;
+  object-fit: cover;
+}
+
+/* ========================================
+   CARD CONTENT
+======================================== */
+
+.crew-call-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 23px 25px;
+}
+
+.crew-call-card__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 11px;
+}
+
+.crew-call-card__category {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: var(--crew-lavender);
+  color: var(--crew-purple-dark);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.crew-call-card__title {
+  width: 100%;
+  margin: 0 0 9px;
+  font-size: clamp(19px, 2vw, 24px);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.crew-call-card__title button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--crew-ink);
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align: left;
+}
+
+.crew-call-card__title button:hover {
+  color: var(--crew-purple-dark);
+}
+
+.crew-call-card__description {
+  display: -webkit-box;
+  width: 100%;
+  margin: 0 0 15px;
+  overflow: hidden;
+  color: var(--crew-muted);
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.crew-call-card__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 17px;
+}
+
+.crew-call-card__skill {
+  padding: 6px 9px;
+  border: 1px solid #e8e1ed;
+  border-radius: 7px;
+  background: #faf8fc;
+  color: #62556f;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.crew-call-card__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #f0ebf2;
+}
+
+.crew-call-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 13px;
+  min-width: 0;
+  color: var(--crew-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.crew-call-card__open-button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border: 1px solid var(--crew-ink);
+  border-radius: 9px;
+  background: var(--crew-ink);
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.crew-call-card__open-button:hover {
+  background: white;
+  color: var(--crew-ink);
+}
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.crew-calls-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 55px 22px;
+  border: 1px dashed #d9cce5;
+  border-radius: 20px;
+  background: #f4eef9;
+  text-align: center;
+}
+
+.crew-calls-page__empty h3 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.crew-calls-page__empty p {
+  max-width: 420px;
+  margin: 12px 0 20px;
+  color: var(--crew-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.crew-calls-page__reset-button {
+  padding: 10px 17px;
+  border: 1px solid var(--crew-ink);
+  border-radius: 9px;
+  background: white;
+  color: var(--crew-ink);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+.crew-calls-page button:focus-visible,
+.crew-calls-page a:focus-visible,
+.crew-calls-page input:focus-visible,
+.crew-calls-page select:focus-visible {
+  outline: 3px solid var(--crew-coral);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 850px) {
+  .crew-call-card {
+    grid-template-columns: minmax(180px, 30%) minmax(0, 1fr);
+  }
+
+  .crew-call-card__content {
+    padding: 19px;
+  }
+
+  .crew-call-card__art {
+    padding: 20px;
+  }
+
+  .crew-call-card__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .crew-calls-page {
+    padding: 0 16px 40px;
+  }
+
+  .crew-calls-page__intro {
+    padding-top: 28px;
+  }
+
+  .crew-calls-page__intro h1 {
+    font-size: 34px;
+  }
+
+  .crew-calls-page__intro > p {
+    font-size: 14px;
+  }
+
+  .crew-calls-page__body {
+    margin-top: 32px;
+  }
+
+  .crew-calls-page__section-heading {
+    align-items: flex-start;
+  }
+
+  .crew-calls-page__section-heading h2 {
+    font-size: 27px;
+  }
+
+  .crew-calls-page__section-heading p {
+    font-size: 13px;
+  }
+
+  .crew-calls-page__result-count {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+
+  .crew-calls-page__toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .crew-calls-page__sort {
+    justify-content: space-between;
+  }
+
+  .crew-calls-page__sort select {
+    flex: 1;
+  }
+
+  .crew-calls-page__filter {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .crew-call-card {
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 17px;
+  }
+
+  .crew-call-card__art {
+    min-height: 165px;
+    padding: 21px;
+  }
+
+  .crew-call-card__art-title {
+    font-size: 26px;
+  }
+
+  .crew-call-card__image {
+    height: auto;
+    min-height: 0;
+    max-height: 280px;
+    object-fit: contain;
+  }
+
+  .crew-call-card__content {
+    padding: 19px;
+  }
+
+  .crew-call-card__title {
+    font-size: 21px;
+  }
+
+  .crew-call-card__footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .crew-call-card__open-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .crew-calls-page__section-heading {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .crew-calls-page__intro h1 {
+    font-size: 30px;
+  }
+}
+.crew-calls-page__banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 28px;
+}
+
+
+/* ========================================
+   SIDEBAR + CREW CALLS LAYOUT
+======================================== */
+
+.crew-calls-layout {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  background: #fbf7ef;
+}
+
+/* Sidebar takes up its normal 280px width */
+.crew-calls-layout > .sidebar {
+  position: sticky;
+  top: 0;
+  flex: 0 0 280px;
+  width: 280px;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Crew Calls occupies the remaining width */
+.crew-calls-layout > .crew-calls-page {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+/* Adjust to the sidebar's existing tablet/mobile width */
+@media (max-width: 768px) {
+  .crew-calls-layout > .sidebar {
+    flex-basis: 250px;
+    width: 250px;
+  }
+}
+
+/* Narrow screens: avoid squeezing the main page too much */
+@media (max-width: 540px) {
+  .crew-calls-layout > .sidebar {
+    flex-basis: 76px;
+    width: 76px;
+  }
+
+  .crew-calls-layout > .sidebar .sidebar-brand {
+    padding: 12px 4px;
+  }
+
+  .crew-calls-layout > .sidebar .sidebar-logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .crew-calls-layout > .sidebar .sidebar-section-title,
+  .crew-calls-layout > .sidebar .sidebar-link span,
+  .crew-calls-layout > .sidebar .sidebar-account-info {
+    display: none;
+  }
+
+  .crew-calls-layout > .sidebar .sidebar-navigation {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+
+  .crew-calls-layout > .sidebar .sidebar-link {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .crew-calls-layout > .sidebar .sidebar-account {
+    justify-content: center;
+    padding: 10px 4px;
+  }
+
+  .crew-calls-layout > .crew-calls-page {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+}
