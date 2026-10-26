@@ -16,6 +16,7 @@ import {
   saveCurrentUser,
 }  from "./profileStorage";
 
+import profileBanner from "../../assets/profile-banner.png";
 import "./ProfilePage.css";
 
 const TABS = [
@@ -246,6 +247,7 @@ export default function ProfilePage() {
 
         {/* Campus Radar Banner */}
         <section className="sprof-banner">
+          <img className="sprof-banner-image" src={profileBanner} alt="Campus Radar profile banner" />
           <div className="sprof-banner-content">
             <span className="sprof-eyebrow">
             </span>
