@@ -1,5 +1,33 @@
 /* =========================================
-CAMPUS RADAR — CLUB PAGE
+   CLUB PAGE + SHARED SIDEBAR LAYOUT
+========================================= */
+
+.club-layout {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #fffaf3;
+}
+
+.club-layout > .sidebar {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  flex: 0 0 260px;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.club-layout > .club-page {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: calc(100% - 260px);
+}
+
+/* =========================================
+CAMPUS RADAR â€” CLUB PAGE
 ========================================= */
 
 .club-page {
@@ -72,7 +100,7 @@ border: 0;
 BANNER IMAGE
 ========================================= */
 
-/* CLUB BANNER — LEAVE SPACE FOR THE LEFT SIDEBAR */
+/* CLUB BANNER â€” LEAVE SPACE FOR THE LEFT SIDEBAR */
 .club-page__banner {
   width: 100%;
   margin: 0;
@@ -567,7 +595,7 @@ background: #354f36;
 }
 
 /* =========================================
-APPLY TO START A CLUB — BOTTOM BANNER
+APPLY TO START A CLUB â€” BOTTOM BANNER
 ========================================= */
 
 .club-page__apply-banner {
@@ -931,4 +959,81 @@ transform: none;
 .club-page__category-chip:hover {
 transform: none;
 }
+}
+
+/* =========================================
+   SIDEBAR-AWARE RESPONSIVE LAYOUT
+========================================= */
+
+@media (max-width: 768px) {
+  .club-layout > .sidebar {
+    flex-basis: 230px;
+  }
+
+  .club-layout > .club-page {
+    width: calc(100% - 230px);
+  }
+}
+
+@media (max-width: 600px) {
+  .club-layout {
+    align-items: stretch;
+  }
+
+  .club-layout > .sidebar {
+    flex-basis: 190px;
+    width: 190px;
+  }
+
+  .club-layout > .club-page {
+    width: calc(100% - 190px);
+  }
+
+  .club-page__banner-image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Prevent the content from becoming too cramped on very narrow screens.
+   The sidebar remains visible and the page can scroll horizontally only
+   if the viewport is narrower than both layout columns combined. */
+@media (max-width: 420px) {
+  .club-layout > .sidebar {
+    flex-basis: 64px;
+    width: 64px;
+  }
+
+  .club-layout > .club-page {
+    width: calc(100% - 64px);
+  }
+
+  .club-layout > .sidebar .sidebar-brand {
+    padding: 8px 4px;
+  }
+
+  .club-layout > .sidebar .sidebar-logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .club-layout > .sidebar .sidebar-section-title,
+  .club-layout > .sidebar .sidebar-link span,
+  .club-layout > .sidebar .sidebar-account-info {
+    display: none;
+  }
+
+  .club-layout > .sidebar .sidebar-navigation {
+    padding: 0 7px 10px;
+  }
+
+  .club-layout > .sidebar .sidebar-link {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .club-layout > .sidebar .sidebar-account {
+    justify-content: center;
+    padding: 10px 4px;
+  }
 }

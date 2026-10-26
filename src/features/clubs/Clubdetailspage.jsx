@@ -31,8 +31,13 @@ return ( <main className="club-details">
 
 }
 
-const events = club.events ?? [];
+const allEvents = JSON.parse(
+  localStorage.getItem("campusRadar_events") || "[]"
+);
 
+const events = allEvents.filter(
+  (event) => event.clubId === "coding-club"
+);
 return ( <main className="club-details">
 {/* Club banner */}
 
