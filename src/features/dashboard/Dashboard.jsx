@@ -133,23 +133,7 @@ if (currentHour < 12) {
         </form>
 
         <div className="dashboard-topbar-actions">
-          <button
-            className="dashboard-icon-button"
-            type="button"
-            aria-label="Notifications"
-          >
-            <BellIcon />
-            <span className="dashboard-badge">4</span>
-          </button>
-
-          <button
-            className="dashboard-icon-button"
-            type="button"
-            aria-label="Messages"
-          >
-            <MessageIcon />
-            <span className="dashboard-badge">2</span>
-          </button>
+         
 
           <button
             className="dashboard-profile-chip"
