@@ -302,20 +302,19 @@ export default function CrewCallsPage() {
     navigate(`/crew-calls/${encodeURIComponent(String(id))}`);
   };
 
-  /* ========================================
-     PAGE JSX
-  ======================================== */
-
   return (
     <div className="crew-calls-layout">
       <Sidebar />
 
       <main className="crew-calls-page">
-        <img
-          src={crewCallsBanner}
-          alt="Crew Calls banner"
-          className="crew-calls-page__banner"
-        />
+        {/* Full-width introductory banner */}
+        <div className="crew-calls-page__banner-wrap">
+          <img
+            src={crewCallsBanner}
+            alt="Crew Calls — every idea needs a crew"
+            className="crew-calls-page__banner"
+          />
+        </div>
 
         <section className="crew-calls-page__intro">
           <span className="crew-calls-page__eyebrow">

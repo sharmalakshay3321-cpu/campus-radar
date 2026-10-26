@@ -15,11 +15,15 @@
   --crew-muted: #817b87;
   --crew-border: #e9e1ec;
 
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
   min-height: 100vh;
-  padding: 0 clamp(16px, 5vw, 76px) 60px;
+  padding: 0 0 60px;
   background: var(--crew-cream);
   color: var(--crew-ink);
   font-family: inherit;
+  overflow-x: clip;
 }
 
 .crew-calls-page *,
@@ -35,14 +39,34 @@
 }
 
 /* ========================================
+   FULL-WIDTH INTRO BANNER
+
+   No fixed height and no object-fit: cover.
+   The complete banner remains visible.
+======================================== */
+
+.crew-calls-page__banner {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ========================================
    INTRO
-   Keep the existing assets banner separate.
 ======================================== */
 
 .crew-calls-page__intro {
+  width: 100%;
   max-width: 1250px;
   margin: 0 auto;
-  padding: 36px 0 10px;
+  padding: 38px clamp(20px, 4vw, 60px) 10px;
 }
 
 .crew-calls-page__eyebrow,
@@ -98,8 +122,10 @@
 ======================================== */
 
 .crew-calls-page__body {
+  width: 100%;
   max-width: 1250px;
   margin: 38px auto 0;
+  padding: 0 clamp(20px, 4vw, 60px);
 }
 
 .crew-calls-page__section-heading {
@@ -269,8 +295,7 @@
 }
 
 /* ========================================
-   SIMPLE COLOURED ARTWORK
-   No shapes, sparkles, or decorative graphics.
+   CARD ARTWORK
 ======================================== */
 
 .crew-call-card__art {
@@ -516,6 +541,34 @@
 }
 
 /* ========================================
+   SIDEBAR + PAGE LAYOUT
+======================================== */
+
+.crew-calls-layout {
+  display: flex;
+  align-items: flex-start;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  background: var(--crew-cream);
+}
+
+.crew-calls-layout > .sidebar {
+  position: sticky;
+  top: 0;
+  flex: 0 0 280px;
+  width: 280px;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.crew-calls-layout > .crew-calls-page {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+}
+
+/* ========================================
    TABLET
 ======================================== */
 
@@ -538,17 +591,24 @@
   }
 }
 
+@media (max-width: 768px) {
+  .crew-calls-layout > .sidebar {
+    flex-basis: 250px;
+    width: 250px;
+  }
+}
+
 /* ========================================
    MOBILE
 ======================================== */
 
 @media (max-width: 700px) {
   .crew-calls-page {
-    padding: 0 16px 40px;
+    padding-bottom: 40px;
   }
 
   .crew-calls-page__intro {
-    padding-top: 28px;
+    padding: 28px 16px 10px;
   }
 
   .crew-calls-page__intro h1 {
@@ -561,6 +621,7 @@
 
   .crew-calls-page__body {
     margin-top: 32px;
+    padding: 0 16px;
   }
 
   .crew-calls-page__section-heading {
@@ -638,64 +699,7 @@
   }
 }
 
-@media (max-width: 420px) {
-  .crew-calls-page__section-heading {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .crew-calls-page__intro h1 {
-    font-size: 30px;
-  }
-}
-.crew-calls-page__banner {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: 28px;
-}
-
-
-/* ========================================
-   SIDEBAR + CREW CALLS LAYOUT
-======================================== */
-
-.crew-calls-layout {
-  display: flex;
-  align-items: stretch;
-  min-height: 100vh;
-  min-height: 100dvh;
-  width: 100%;
-  background: #fbf7ef;
-}
-
-/* Sidebar takes up its normal 280px width */
-.crew-calls-layout > .sidebar {
-  position: sticky;
-  top: 0;
-  flex: 0 0 280px;
-  width: 280px;
-  height: 100vh;
-  height: 100dvh;
-}
-
-/* Crew Calls occupies the remaining width */
-.crew-calls-layout > .crew-calls-page {
-  flex: 1 1 0;
-  width: auto;
-  min-width: 0;
-  min-height: 100vh;
-}
-
-/* Adjust to the sidebar's existing tablet/mobile width */
-@media (max-width: 768px) {
-  .crew-calls-layout > .sidebar {
-    flex-basis: 250px;
-    width: 250px;
-  }
-}
-
-/* Narrow screens: avoid squeezing the main page too much */
+/* Narrow screens: compact sidebar */
 @media (max-width: 540px) {
   .crew-calls-layout > .sidebar {
     flex-basis: 76px;
@@ -731,9 +735,15 @@
     justify-content: center;
     padding: 10px 4px;
   }
+}
 
-  .crew-calls-layout > .crew-calls-page {
-    padding-right: 12px;
-    padding-left: 12px;
+@media (max-width: 420px) {
+  .crew-calls-page__section-heading {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .crew-calls-page__intro h1 {
+    font-size: 30px;
   }
 }
